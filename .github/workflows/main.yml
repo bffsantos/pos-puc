@@ -29,7 +29,8 @@ jobs:
 
       - name: Execução do teste
         run: mocha devops-basico/aula-02/conversao-temperatura/src/test/convert.js
-      - name: Build and push Docker images
+        
+      - name: Construção imagem Docker
         uses: docker/build-push-action@v6.9.0
         with:
           context: devops-basico/aula-02/conversao-temperatura/src
