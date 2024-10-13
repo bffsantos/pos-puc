@@ -23,10 +23,10 @@ jobs:
 
       - name: Instalação do Mocha para teste
         run: |
-          cd src;
+          cd devops-basico/aula-02/conversao-temperatura/src;
           npm install -g mocha;
           npm install
 
       - name: Execução do teste
-        run: mocha src/test/convert.js
+        run: mocha devops-basico/aula-02/conversao-temperatura/src/test/convert.js
 
