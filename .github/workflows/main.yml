@@ -29,4 +29,14 @@ jobs:
 
       - name: Execução do teste
         run: mocha devops-basico/aula-02/conversao-temperatura/src/test/convert.js
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: devops-basico/aula-02/conversao-temperatura/src
+          file: devops-basico/aula-02/conversao-temperatura/src/Dockerfile
+          push: true
+          tags: |
+            bffsantos/aula-conversao-temparatura:v1
+            bffsantos/aula-conversao-temparatura:latest
+        
 
