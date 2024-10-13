@@ -45,7 +45,7 @@ jobs:
           file: devops-basico/aula-02/conversao-temperatura/src/Dockerfile
           push: true
           tags: |
-            bffsantos/aula-conversao-temperatura:v1
+            bffsantos/aula-conversao-temperatura:${{github.run_number}}
             bffsantos/aula-conversao-temperatura:latest
         
 
