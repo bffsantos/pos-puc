@@ -1,0 +1,34 @@
+name: CI
+
+on:
+
+  push:
+    paths:
+      - \devops-basico\aula-02\conversao-temperatura
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.4
+        with:
+          node-version: 20.17.0
+
+      - name: Instalação do Mocha para teste
+        run: |
+          cd src;
+          npm install -g mocha;
+          npm install
+
+      - name: Execução do teste
+        run: mocha src/test/convert.js
+
