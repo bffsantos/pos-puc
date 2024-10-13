@@ -4,7 +4,7 @@ on:
 
   push:
     paths:
-      - \devops-basico\aula-02\conversao-temperatura
+      - /devops-basico/aula-02/conversao-temperatura/**
     branches: [ main ]
 
   workflow_dispatch:
