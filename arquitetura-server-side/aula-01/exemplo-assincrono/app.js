@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Lê o arquivo de forma assíncrona
-fs.readFile('exemplo.tx', 'utf8', (err, data) => {
+fs.readFile('exemplo.txt', 'utf8', (err, data) => {
   if (err) {
     console.error('Erro ao ler o arquivo:', err);
     return;

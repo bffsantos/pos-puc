@@ -8,6 +8,11 @@ app.get('/', (req, res) => {
   res.send('Olá mundo | EXPRESS');
 });
 
+// Rota 2 exemplo
+app.get('/rota2', (req, res) => {
+  res.send('ROTA 2 - Olá mundo | EXPRESS');
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
