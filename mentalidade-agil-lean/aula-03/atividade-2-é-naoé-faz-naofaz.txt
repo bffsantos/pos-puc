@@ -1,0 +1,17 @@
+É:
+- app mobile
+- site
+- gratuito
+- gerenciador de ponto de bolsistas
+
+NÃO É:
+- Não é uma rede social
+- Gerenciador de projetos
+
+FAZ:
+- Bate ponto do bolsista
+- Permite subir relatório dos bolsistas
+
+NÃO FAZ:
+- Não cria novos projetos
+- Gerencia bolsistas por projeto pelos coordenadores

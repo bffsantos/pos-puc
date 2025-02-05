@@ -1,0 +1,18 @@
+TRÊS OBJETIVOS DO PRODUTO
+1. Bater o ponto do bolsista
+- Cadastrar bolsista (Cristina)
+- Bater ponto de entrada e saida (João Pedro)
+
+2. Permite enviar relatório de atividades do bolsista
+- Dar upload de um arquivo contendo relatório (João Pedro)
+- Dar upload em fotos de reuniao ou saida a campo (João Pedro)
+- Fazer a leitura dos relatórios (Cristina)
+
+3. Ter acesso a quantidade bolsistas por projeto
+- Cadastrar bolsista (Cristina)
+- Cadastrar Projeto (Cristina)
+- Verificar colegas de trabalho (João Pedro)
+- Permitir ler um resumo do projeto (João Pedro)
+- Verificar horas trabalhas por bolsista (Cristina)
+- Fazer download dos relatórios do bolsista (Cristina)
+- Fazer Login (Cristina e João Pedro)

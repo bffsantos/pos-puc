@@ -1,0 +1,7 @@
+PARA Laboratórios de Bolsitas Academicos
+CUJO coordenadores não tem controle de horas trabalhadas pelos bolsistas
+O MeuPonto
+É UM aplicativo móvel
+QUE controla da melhor forma as horas trabalhadas pelos bolsistas por semana
+DIFERENTEMENTE DO controle no papel ou somente por conversa
+O NOSSO PRODUTO facilita a visualizacao das horas trabalhadas por cada bolsista, controlando quanto algum bolsista pode estar devendo de horas a trabalhar, revertendo horas a ver por produtividade.

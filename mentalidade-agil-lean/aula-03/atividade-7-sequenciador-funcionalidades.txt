@@ -1,0 +1,22 @@
+SEQUENCIADOR DE FUNCIONALIDADES
+
+ONDAS:
+
+1. 
+- Cadastrar bolsista ($$ - EE - 2)
+- Cadastrar Projeto ($$ - EE - 2)
+- Fazer Login ($ - E - 2)
+
+2.
+- Bater ponto de entrada e saida ($$$ - EE - 3)
+- Verificar horas trabalhas por bolsista ($$$ - EEE - 3)
+
+4.
+- Dar upload de um arquivo contendo relatório ($$ - EE - 3)
+- Fazer download dos relatórios do bolsista ($$$ - EE - 2)
+- Permitir ler um resumo do projeto ($$ - E - 1)
+
+3.
+- Dar upload em fotos de reuniao ou saida a campo ($$ - EE - 3)
+- Fazer a leitura dos relatórios ($ - EE - 1)
+- Verificar colegas de trabalho ($ - E - 3)

@@ -1,0 +1,29 @@
+CANVAS MVP (Canvas Simulado)
+
+PROPOSTA DO MVP:
+- Criar um ambiente possivel de bater o ponto dos bolsistas e verificar suas horas trabalhadas.
+
+PERSONAS SEGMENTADAS:
+- João Pedro
+- Cristina
+- Laboratórios de Extensão e Pesquisa
+
+JORNADAS:
+Cristina indo ao laboratório em horários indefinifos
+João Pedro indo trabalhar no laboratório
+
+FUNCIONALIDADES:
+- Cadastrar bolsista
+- Cadastrar Projeto
+- Fazer Login
+- Bater ponto de entrada e saida
+- Verificar horas trabalhas por bolsista
+
+RESULATADO ESPERADO:
+- Facilitar o controle de horas trabalhas pelo coordenadores dos laboratórios
+
+MÉTRICAS PARA VALIDAR AS HIPÓTESES DO NEGÓCIO:
+- Feedback dos bolsistas e dos coordenadores por meio de questionários
+
+CUSTO & CRONOGRAMA:
+- Um desenvolvedor trabalhando no MVP 1 por 3 meses

@@ -1,0 +1,29 @@
+FUNCIONALIDADES (Lucratividade - Esforço - UX):
+- Bater ponto de entrada e saida ($$$ - EE - 3)
+- Dar upload de um arquivo contendo relatório ($$ - EE - 3)
+- Dar upload em fotos de reuniao ou saida a campo ($$ - EE - 3)
+- Fazer a leitura dos relatórios ($ - EE - 1)
+- Cadastrar bolsista ($$ - EE - 2)
+- Cadastrar Projeto ($$ - EE - 2)
+- Verificar colegas de trabalho ($ - E - 3)
+- Permitir ler um resumo do projeto ($$ - E - 1)
+- Verificar horas trabalhas por bolsista ($$$ - EEE - 3)
+- Fazer download dos relatórios do bolsista ($$$ - EE - 2)
+- Fazer Login ($ - E - 2)
+
+Vermelho (Dificil desenvolvimento):
+- 
+
+Amarelo (Médio desenvolvimento):
+- Bater ponto de entrada e saida
+- Dar upload de um arquivo contendo relatório
+- Dar upload em fotos de reuniao ou saida a campo
+- Fazer download dos relatórios do bolsista
+
+Verde (Facil de desenvolvimento):
+- Cadastrar bolsista
+- Cadastrar Projeto
+- Verificar colegas de trabalho
+- Permitir ler um resumo do projeto
+- Verificar horas trabalhas por bolsista
+- Fazer a leitura dos relatórios
