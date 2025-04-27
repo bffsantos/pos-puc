@@ -1,0 +1,273 @@
+CREATE TABLE VEICULOS
+(
+placa CHAR(8),
+ano NUMBER(4),
+km NUMBER(6),
+marca VARCHAR(50),
+modelo VARCHAR(50) -- repare que não há virgula aqui
+);
+
+INSERT INTO VEICULOS
+VALUES ('IJK-1212', 2022, 0, 'Chevrolet', 'Onix');
+
+INSERT INTO VEICULOS (placa, ano, km, marca, modelo)
+VALUES ('IJM-1556', 2015, 72045, 'Volkswagen', 'Gol');
+
+INSERT INTO VEICULOS (placa, ano, km, marca, modelo)
+VALUES ('IJO-1557', 2022, 72045, 'Volkswagen', 'Parati');
+
+INSERT INTO VEICULOS (placa, ano, km, marca, modelo)
+VALUES ('KJO-1557', 2021, 500, 'Ford', 'Mustang');
+
+INSERT INTO VEICULOS (placa, ano, km, marca, modelo)
+VALUES ('IJP-1212', 2020, 7000, 'Chevrolet', 'Prisma');
+
+SELECT * FROM VEICULOS;
+
+SELECT PLACA, ANO, KM FROM VEICULOS WHERE KM = 0;
+
+SELECT PLACA, ANO, MODELO FROM VEICULOS V WHERE V.ANO < 2022;
+
+-- ATUALIZA O MODELO DO CARRO PARA CRUZE ONDE A PLACA DO CARRO PRECISA SER IJK-1212
+UPDATE VEICULOS V SET V.MODELO = 'Cruze' WHERE V.PLACA = 'IJK-1212';
+
+-- MULTIPLICA POR 2 O ANO DOS CARROS NA CONSULTA, O VALOR DAS TABELAS MANTEM
+SELECT ANO * 2, MODELO FROM VEICULOS;
+
+-- SOMA 100KM NA COLUNA KM DE TODOS OS CARROS ENTRE 2015 E 2021
+UPDATE VEICULOS V SET V.KM = V.KM + 100 WHERE (V.ANO >= 2015) AND (V.ANO <= 2021);
+
+-- DELETA REGISTRO DA TABELA ONDE A PLACA FOR IJM-1556
+DELETE FROM VEICULOS WHERE PLACA = 'IJM-1556';
+
+-- DELETA TODOS OS VEICULOS DA MARCA CHEVROLET ONDE O KM É MAIOR QUE 50000
+DELETE FROM VEICULOS WHERE (marca = 'Chevrolet') AND (km > 50000);
+
+-- ORDENA POR KM
+SELECT PLACA, KM FROM VEICULOS ORDER BY KM;
+
+-- ORDENA POR KM NO FORMATO DESCRESCENTE
+SELECT PLACA, KM FROM VEICULOS WHERE ANO > 2000 ORDER BY KM DESC;
+
+-- ORDENA POR MODELO NO FORMATO CRESCENTE
+SELECT MARCA, MODELO FROM VEICULOS ORDER BY MARCA DESC, MODELO ASC;
+
+-- INFORMA QUANTIDADE DE REGISTROS NA TABELA
+SELECT COUNT(*) FROM VEICULOS;
+
+-- INFORMA QUANTIDADE DE VECILOS NA TABELA DA MARCA FORD
+SELECT COUNT(*) FROM VEICULOS V WHERE V.MARCA = 'Ford';
+
+-- RETORNA MARCAS SEM REPITI-LAS
+SELECT DISTINCT MARCA FROM VEICULOS;
+
+CREATE TABLE PESSOAS
+(
+cpf VARCHAR(20) NOT NULL,
+nome VARCHAR(150) NOT NULL,
+idade NUMBER(3) NULL,
+endereco VARCHAR(150) -- o campo endereço é NULL implicitamente
+);
+
+-- ordem normal das colunas:
+INSERT INTO PESSOAS (cpf, nome, idade, endereco)
+VALUES ('32809', 'Maria', 25, 'Rua A, 20');
+-- outra ordem qualquer das colunas:
+INSERT INTO PESSOAS (idade, endereco, cpf, nome)
+VALUES (25, 'Rua A, 20', '30599', 'Pedro');
+-- valores nulos:
+INSERT INTO PESSOAS (cpf, nome, idade, endereco)
+VALUES ('29385', 'Carlos', NULL, NULL);
+INSERT INTO PESSOAS (cpf, nome, idade, endereco)
+VALUES ('39582', 'Alice', 80, NULL);
+INSERT INTO PESSOAS (cpf, nome, idade, endereco)
+VALUES ('78838', 'Antonio', NULL, 'Rua B, 80');
+
+SELECT * FROM PESSOAS;
+
+INSERT INTO PESSOAS (cpf, nome)
+VALUES ('90038', 'Ana Paula');
+INSERT INTO PESSOAS (cpf, nome, idade)
+VALUES ('23487', 'Patricia', 18);
+INSERT INTO PESSOAS (cpf, nome, endereco)
+VALUES ('23363', 'Jose', 'Rua C, 50');
+
+SELECT * FROM PESSOAS WHERE idade IS NULL;
+
+SELECT * FROM PESSOAS WHERE endereco IS NOT NULL;
+
+SELECT * FROM PESSOAS WHERE (idade IS NULL) OR (ENDERECO IS NULL);
+
+-- Pessoas com nomes iniciando com a letra 'A':
+SELECT * FROM PESSOAS WHERE nome LIKE 'A%';
+
+-- Pessoas com nomes iniciando com 'Ana':
+SELECT * FROM PESSOAS WHERE nome LIKE 'Ana%';
+
+-- Pessoas com nomes que terminam com 'Silva':
+SELECT * FROM PESSOAS WHERE nome LIKE '%Silva';
+
+-- Pessoas com nomes que contenham 'Carlos':
+SELECT * FROM PESSOAS WHERE nome LIKE '%Carlos%';
+
+-- Pode corresponder a Maria ou Mario:
+SELECT * FROM PESSOAS WHERE nome LIKE 'Mari_ da Silva';
+
+-- Pessoas que tenham 25, 30 ou 40 anos de idade:
+SELECT * FROM PESSOAS WHERE idade IN (25, 30, 40);
+
+ALTER TABLE PESSOAS ADD sexo CHAR(1);
+
+ALTER TABLE PESSOAS DROP COLUMN idade;
+
+ALTER TABLE PESSOAS ADD datanasc DATE NULL;
+
+INSERT INTO PESSOAS (cpf, nome, datanasc, endereco)
+VALUES ('29048', 'Roberto', '03-FEB-1980', 'Rua D, 80');
+
+-- Formato alternativo (padrão ANSI YYYY-MM-DD):
+-- Deve-se acrescentar a palavra DATE antes da data.
+INSERT INTO PESSOAS (cpf, nome, datanasc, endereco)
+VALUES ('29048', 'Roberto', DATE '1980-02-03', 'Rua D, 80');
+
+SELECT TO_CHAR(SYSDATE, 'MONTH, DD, YYYY HH24:MI:SS') FROM DUAL;
+
+-- DUAL é uma tabela interna do Oracle usada com o comando SELECT quando não precisamos de uma tabela real do banco de dados.
+SELECT nome, TO_CHAR(datanasc, 'MONTH, DD, YYYY') FROM PESSOAS;
+
+INSERT INTO PESSOAS (cpf, nome, datanasc, endereco) 
+VALUES ('29920','Beto',TO_DATE('25-FEB-1979 21:36:28','DD-MON-YYYY HH24:MI:SS'),'Rua E, 80');
+
+SELECT SYSDATE + 10 FROM DUAL;
+
+CREATE TABLE ALUNOS
+(
+nroMatricula VARCHAR(10) NOT NULL,
+cpf VARCHAR(20) NOT NULL,
+email VARCHAR(100) NOT NULL,
+nome VARCHAR(150) NOT NULL,
+anoIngresso NUMBER(4) NOT NULL,
+endereco VARCHAR(150) NULL,
+sexo CHAR(1) NOT NULL,
+CONSTRAINT PK_ALUNOS PRIMARY KEY (nroMatricula),
+CONSTRAINT AK1_ALUNOS UNIQUE (cpf),
+CONSTRAINT AK2_ALUNOS UNIQUE (email)
+);
+
+ALTER TABLE ALUNOS ADD CONSTRAINT CK_AnoIngr CHECK (anoIngresso > 2000);
+
+ALTER TABLE ALUNOS ADD CONSTRAINT CK_sexo CHECK (sexo IN ('M', 'F'));
+
+CREATE TABLE ESTADOS
+(
+uf CHAR(2) NOT NULL,
+nome VARCHAR2(40) NOT NULL,
+regiao CHAR(2) NOT NULL,
+CONSTRAINT PK_ESTADOS PRIMARY KEY (uf)
+);
+
+CREATE TABLE CIDADES
+(
+cod_cidade NUMBER(4) NOT NULL,
+nome VARCHAR2(60) NOT NULL,
+uf CHAR(2) NOT NULL,
+CONSTRAINT PK_CIDADES PRIMARY KEY (cod_cidade)
+);
+
+ALTER TABLE CIDADES ADD (CONSTRAINT FK_EST_CID FOREIGN KEY (uf) REFERENCES ESTADOS (uf));
+
+insert into estados values ('AC', 'Acre', 'N');
+insert into estados values ('AL', 'Alagoas', 'NE');
+insert into estados values ('AM', 'Amazonas', 'N');
+insert into estados values ('AP', 'Amapá', 'N');
+insert into estados values ('BA', 'Bahia', 'NE');
+insert into estados values ('CE', 'Ceará', 'NE');
+insert into estados values ('DF', 'Distrito Federal', 'CO');
+insert into estados values ('ES', 'Espírito Santo', 'SE');
+insert into estados values ('GO', 'Goiás', 'CO');
+insert into estados values ('MA', 'Maranhão', 'NE');
+insert into estados values ('MG', 'Minas Gerais', 'SE');
+insert into estados values ('MS', 'Mato Grosso do Sul', 'CO');
+insert into estados values ('MT', 'Mato Grosso', 'CO');
+insert into estados values ('PA', 'Pará', 'N');
+insert into estados values ('PB', 'Paraíba', 'NE');
+insert into estados values ('PE', 'Pernambuco', 'NE');
+insert into estados values ('PI', 'Piauí', 'NE');
+insert into estados values ('PR', 'Paraná', 'S');
+insert into estados values ('RJ', 'Rio de Janeiro', 'SE');
+insert into estados values ('RN', 'Rio Grande do Norte', 'NE');
+insert into estados values ('RO', 'Rondônia', 'N');
+insert into estados values ('RR', 'Roraima', 'N');
+insert into estados values ('RS', 'Rio Grande do Sul', 'S');
+insert into estados values ('SC', 'Santa Catarina', 'S');
+insert into estados values ('SE', 'Sergipe', 'NE');
+insert into estados values ('SP', 'São Paulo', 'SE');
+insert into estados values ('TO', 'Tocantins', 'N');
+
+SELECT * FROM ESTADOS;
+
+insert into cidades values (1234, 'Rio Branco', 'AC');
+insert into cidades values (5678, 'Maceió', 'AL');
+insert into cidades values (9101, 'Manaus', 'AM');
+insert into cidades values (1122, 'Macapá', 'AP');
+insert into cidades values (3344, 'Salvador', 'BA');
+insert into cidades values (5566, 'Fortaleza', 'CE');
+insert into cidades values (7788, 'Brasília', 'DF');
+insert into cidades values (9900, 'Vitória', 'ES');
+insert into cidades values (2233, 'Goiânia', 'GO');
+insert into cidades values (4455, 'São Luís', 'MA');
+insert into cidades values (6677, 'Belo Horizonte', 'MG');
+insert into cidades values (8899, 'Campo Grande', 'MS');
+insert into cidades values (1011, 'Cuiabá', 'MT');
+insert into cidades values (1213, 'Belém', 'PA');
+insert into cidades values (1415, 'João Pessoa', 'PB');
+insert into cidades values (1617, 'Recife', 'PE');
+insert into cidades values (1819, 'Teresina', 'PI');
+insert into cidades values (2021, 'Curitiba', 'PR');
+insert into cidades values (2223, 'Rio de Janeiro', 'RJ');
+insert into cidades values (2425, 'Natal', 'RN');
+insert into cidades values (2627, 'Porto Velho', 'RO');
+insert into cidades values (2829, 'Boa Vista', 'RR');
+insert into cidades values (3031, 'Porto Alegre', 'RS');
+insert into cidades values (3233, 'Florianópolis', 'SC');
+insert into cidades values (3435, 'Aracaju', 'SE');
+insert into cidades values (3637, 'São Paulo', 'SP');
+insert into cidades values (3839, 'Palmas', 'TO');
+
+insert into cidades values (4041, 'Campinas', 'SP');
+insert into cidades values (4243, 'São Bernardo do Campo', 'SP');
+insert into cidades values (4445, 'Ribeirão Preto', 'SP');
+insert into cidades values (4647, 'Santos', 'SP');
+insert into cidades values (4849, 'Niterói', 'RJ');
+insert into cidades values (5051, 'Caxias do Sul', 'RS');
+insert into cidades values (5253, 'Lages', 'SC');
+insert into cidades values (5455, 'Uberlândia', 'MG');
+insert into cidades values (5657, 'Contagem', 'MG');
+insert into cidades values (5859, 'Joinville', 'SC');
+insert into cidades values (6061, 'Ponta Grossa', 'PR');
+insert into cidades values (6263, 'Maringá', 'PR');
+insert into cidades values (6465, 'Anápolis', 'GO');
+insert into cidades values (6667, 'São José', 'SC');
+insert into cidades values (6869, 'Bauru', 'SP');
+insert into cidades values (7071, 'Londrina', 'PR');
+insert into cidades values (7273, 'Araxá', 'MG');
+insert into cidades values (7475, 'Teresópolis', 'RJ');
+insert into cidades values (7677, 'Pelotas', 'RS');
+insert into cidades values (7879, 'Varginha', 'MG');
+insert into cidades values (8081, 'Barueri', 'SP');
+insert into cidades values (8283, 'Novo Hamburgo', 'RS');
+insert into cidades values (8485, 'Cabo Frio', 'RJ');
+insert into cidades values (8889, 'Juiz de Fora', 'MG');
+
+SELECT * FROM CIDADES;
+
+SELECT EST.uf AS estado_uf, EST.nome AS estado_nome, CID.uf AS cidade_uf, CID.nome AS cidade_nome 
+FROM ESTADOS EST INNER JOIN CIDADES CID ON EST.uf = CID.uf order by EST.uf;
+
+SELECT EST.uf AS estado_uf, EST.nome AS estado_nome, CID.uf AS cidade_uf, CID.nome AS cidade_nome 
+FROM ESTADOS EST LEFT OUTER JOIN CIDADES CID
+ON EST.uf = CID.uf;
+
+SELECT EST.uf AS estado_uf, EST.nome AS estado_nome, CID.uf AS cidade_uf, CID.nome AS cidade_nome 
+FROM ESTADOS EST FULL OUTER JOIN CIDADES CID
+ON EST.uf = CID.uf;
